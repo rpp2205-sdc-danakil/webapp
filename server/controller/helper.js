@@ -91,7 +91,7 @@ module.exports = {
     var product_id = req.params.product_id;
     var count = req.params.count;
 
-    axios.get(`${API_Link}/qa/questions?product_id=${product_id}&count=${count}`, auth)
+    axios.get(`${process.env.QA_API_URL}/qa/questions?product_id=${product_id}&count=${count}`, auth)
     .then(response => {
       res.status(200).send(response.data);
     })
@@ -104,7 +104,7 @@ module.exports = {
     var question_id = req.params.question_id;
     var count = req.params.count;
 
-    axios.get(`${API_Link}/qa/questions/${question_id}/answers?count=${count}`, auth)
+    axios.get(`${process.env.QA_API_URL}/qa/questions/${question_id}/answers?count=${count}`, auth)
     .then(response => {
       res.status(200).send(response.data);
     })
@@ -153,7 +153,7 @@ module.exports = {
   updateHelpfulCountsForQuestion: (req, res) => {
     var question_id = req.params.question_id;
 
-    axios.put(`${API_Link}/qa/questions/${question_id}/helpful`, {question_id}, auth)
+    axios.put(`${process.env.QA_API_URL}/qa/questions/${question_id}/helpful`, {question_id}, auth)
     .then(response => {
       res.status(204).send(response.data);
     })
@@ -166,7 +166,7 @@ module.exports = {
   updateHelpfulCountsForAnswer: (req, res) => {
     var answer_id = req.params.answer_id;
 
-    axios.put(`${API_Link}/qa/answers/${answer_id}/helpful`, {answer_id}, auth)
+    axios.put(`${process.env.QA_API_URL}/qa/answers/${answer_id}/helpful`, {answer_id}, auth)
     .then(response => {
       res.status(204).send(response.data);
     })
@@ -179,7 +179,7 @@ module.exports = {
   updateReportForQuestion: (req, res) => {
     var question_id = req.params.question_id;
 
-    axios.put(`${API_Link}/qa/questions/${question_id}/report`, {question_id}, auth)
+    axios.put(`${process.env.QA_API_URL}/qa/questions/${question_id}/report`, {question_id}, auth)
     .then(response => {
       res.status(204).send(response.data);
     })
@@ -192,7 +192,7 @@ module.exports = {
   updateReportForAnswer: (req, res) => {
     var answer_id = req.params.answer_id;
 
-    axios.put(`${API_Link}/qa/questions/${answer_id}/report`, {answer_id}, auth)
+    axios.put(`${process.env.QA_API_URL}/qa/questions/${answer_id}/report`, {answer_id}, auth)
     .then(response => {
       res.status(204).send(response.data);
     })
@@ -208,7 +208,7 @@ module.exports = {
     var email = req.body.email;
     var product_id = parseInt(req.body.product_id);
 
-    axios.post(`${API_Link}/qa/questions`, {
+    axios.post(`${process.env.QA_API_URL}/qa/questions`, {
       body, name, email, product_id
     }, auth)
     .then(response => {
@@ -225,7 +225,7 @@ module.exports = {
     console.log('body; ', req.body)
     var { body, name, email, photos } = req.body;
 
-    axios.post(`${API_Link}/qa/questions/${question_id}/answers`, {
+    axios.post(`${process.env.QA_API_URL}/qa/questions/${question_id}/answers`, {
       question_id, body, name, email, photos
     }, auth)
     .then(response => {
