@@ -1,9 +1,10 @@
 // const spdy = require('spdy');
+require('dotenv').config();
 var compression = require('compression');
 const fs = require('fs');
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const path = require('path');
 const bodyParser = require('body-parser');
 const { postInteractionHandler, getProductHandler, getRelatedHandler, getStylesHandler, getReviewsHandler, getQuestionsHandler, getAnswersHandler, postAnswerHandler, postQuestionHandler, updateHelpfulCountsForQuestion, updateHelpfulCountsForAnswer, updateReportForQuestion, updateReportForAnswer, postReviewHandler, updateHelpfulCountsForReview, updateReportForReview } = require('./controller/helper.js');

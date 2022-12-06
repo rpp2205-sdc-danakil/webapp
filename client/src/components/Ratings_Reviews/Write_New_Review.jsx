@@ -99,7 +99,7 @@ class Write_New_Review extends React.Component {
     formData.append("file", files[0]);
     formData.append("upload_preset", `${config.cloudinary_preset}`);
 
-    axios.post("https://api.cloudinary.com/v1_1/dwcubhwiw/image/upload", formData)
+    axios.post(`https://api.cloudinary.com/v1_1/${config.cloudinary_name}/image/upload`, formData)
       .then(response => {
         let url = response.data.url;
         this.state.photos.push(url)

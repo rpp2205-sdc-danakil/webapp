@@ -12,7 +12,8 @@
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production && nodemon ./server/index.js",
-    "watch": "webpack --watch & nodemon ./server/index.js"
+    "watch": "webpack --watch & nodemon ./server/index.js",
+    "start": "nodemon ./server/index.js"
   },
   "jest": {
     "preset": "jest-puppeteer",
