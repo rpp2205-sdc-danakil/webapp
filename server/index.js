@@ -1,4 +1,3 @@
-// const spdy = require('spdy');
 require('dotenv').config();
 var compression = require('compression');
 const fs = require('fs');
@@ -7,25 +6,10 @@ const app = express();
 const port = process.env.PORT || 3000;
 const path = require('path');
 const bodyParser = require('body-parser');
-const { postInteractionHandler, getProductHandler, getRelatedHandler, getStylesHandler, getReviewsHandler, getQuestionsHandler, getAnswersHandler, postAnswerHandler, postQuestionHandler, updateHelpfulCountsForQuestion, updateHelpfulCountsForAnswer, updateReportForQuestion, updateReportForAnswer, postReviewHandler, updateHelpfulCountsForReview, updateReportForReview } = require('./controller/helper.js');
+const { postInteractionHandler, getProductsHandler, getProductHandler, getRelatedHandler, getStylesHandler, getReviewsHandler, getQuestionsHandler, getAnswersHandler, postAnswerHandler, postQuestionHandler, updateHelpfulCountsForQuestion, updateHelpfulCountsForAnswer, updateReportForQuestion, updateReportForAnswer, postReviewHandler, updateHelpfulCountsForReview, updateReportForReview } = require('./controller/helper.js');
 
 app.use(bodyParser.json());
 app.use(compression());
-
-// const options = {
-//   key: fs.readFileSync(__dirname + '/http2-express/server.key'),
-//   cert:  fs.readFileSync(__dirname + '/http2-express/server.crt')
-// }
-// spdy
-//   .createServer(options, app)
-//   .listen(port, (error) => {
-//     if (error) {
-//       console.error(error)
-//       return process.exit(1)
-//     } else {
-//       console.log('Listening on PORT: ' + port + '.')
-//     }
-//   })
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 app.get('/', async (req, res) => {
@@ -38,6 +22,8 @@ app.get('/', async (req, res) => {
 })
 
 //get routes
+app.get('/products', getProductsHandler);
+
 app.get('/products/:product_id', getProductHandler);
 
 app.get('/products/:product_id/styles', getStylesHandler);

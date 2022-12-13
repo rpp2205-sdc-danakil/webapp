@@ -79,7 +79,7 @@ class App extends React.Component {
     if(prodId.slice(1) !== '') {
       this.init(prodId.slice(1))
     } else {
-      this.init('71697');
+      this.init('1');
     }
   }
 

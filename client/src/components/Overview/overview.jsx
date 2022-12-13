@@ -24,10 +24,12 @@ class Overview extends React.Component {
   }
 
   handleStyleIdChange(newId) {
-    var styleObj = newId === undefined ? this.props.defaultStyle : this.props.styles.find(style => style.style_id === newId);
+    //var styleObj = newId === undefined ? this.props.defaultStyle : this.props.styles.find(style => style.style_id === newId);
+    var styleObj = newId === undefined ? this.props.defaultStyle : this.props.styles.find(style => style.id === newId);
     this.setState({priceInfo: {original_price: styleObj.original_price, sale_price: styleObj.sale_price},
                    styleObj: styleObj,
-                   styleId: styleObj.style_id});
+                   //styleId: styleObj.style_id
+                   styleId: styleObj.id});
   }
 
   handleModalAppear() {

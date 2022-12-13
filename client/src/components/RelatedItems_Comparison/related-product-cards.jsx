@@ -5,7 +5,7 @@ import withClickData from '../hoc_click_data.jsx';
 
 function RPC (props) {
 
-  if(props.info.length === 0) {
+  if(props.info.length === 0 || props.info.defaultStyle === undefined) {
     return ('')
   } else {
     if(props.info.defaultStyle.sale_price === null) {
@@ -13,7 +13,10 @@ function RPC (props) {
     } else {
       var price = props.info.defaultStyle.sale_price;
     }
-    if(props.info.defaultStyle.photos[0].thumbnail_url === null) {
+    // if(props.info.defaultStyle.photos[0].thumbnail_url === null) {
+    //   var photo = './img/NoImageThumbnail.png';
+    // }
+    if(props.info.defaultStyle.photos.length === 0) {
       var photo = './img/NoImageThumbnail.png';
     } else {
       var photo = props.info.defaultStyle.photos[0].thumbnail_url;
