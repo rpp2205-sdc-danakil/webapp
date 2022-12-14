@@ -118,7 +118,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.ratings);
     //only render the children components after componentDidMount() is completed fetching data from server
     if (this.state.currentProductId === '') {
       return null;

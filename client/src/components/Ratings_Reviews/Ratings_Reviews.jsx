@@ -74,7 +74,6 @@ class Ratings_Reviews extends React.Component {
   }
 
   render() {
-    console.log('this is a test for ratings', this.state.ratings)
     return (
       <div id="review_container">
         <Rating_Breakdown productId={this.props.productId} rating={this.props.rating} reviews={this.props.reviews} ratings={this.state.ratings} totalReviews={this.props.totalReviews} totalRatings={this.props.totalRatings} filterReviews={this.filterReviews} clearFilter={this.clearFilter} reviewsMeta={this.props.reviewsMeta}/>
