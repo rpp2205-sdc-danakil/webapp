@@ -21,7 +21,7 @@ module.exports = {
   },
 
   getProductsHandler: (req, res) => {
-    axios.get(`http://localhost:3001/products`, auth)
+    axios.get(`${process.env.PO_API_URL}`, auth)
     .then(response => {
       res.status(200).send(response.data);
     })
@@ -33,7 +33,7 @@ module.exports = {
   getProductHandler: (req, res) => {
     var product_id = req.params.product_id;
 
-    axios.get(`${process.env.PO__API_URL}/products/${product_id}`, auth)
+    axios.get(`${process.env.PO_API_URL}/products/${product_id}`, auth)
       .then(response => {
         res.status(200).send(response.data)
       })
@@ -44,7 +44,7 @@ module.exports = {
 
   getRelatedHandler: (req, res) => {
     var product_id = req.params.product_id;
-    axios.get(`${process.env.PO__API_URL}/products/${product_id}/related`, auth)
+    axios.get(`${process.env.PO_API_URL}/products/${product_id}/related`, auth)
       .then(response => {
         res.status(200).send(response.data);
       })
@@ -55,7 +55,7 @@ module.exports = {
 
   getStylesHandler: (req, res) => {
     var product_id = req.params.product_id;
-    axios.get(`${process.env.PO__API_URL}/products/${product_id}/styles`, auth)
+    axios.get(`${process.env.PO_API_URL}/products/${product_id}/styles`, auth)
       .then(response => {
         res.status(200).send(response.data);
       })
