@@ -30,5 +30,3 @@ class SearchBar extends React.Component{
 }
 
 export default SearchBar;
-
-//<FontAwesomeIcon className="search_icon_reviews" icon={ faSearch } />

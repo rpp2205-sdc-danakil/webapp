@@ -2,7 +2,6 @@ import ModalWindow from './ModalWindow.jsx';
 import axios from 'axios';
 import withClickData from '../hoc_click_data.jsx';
 
-// this class handles each question for the specific product
 class Question extends React.Component {
   constructor(props) {
     super(props);

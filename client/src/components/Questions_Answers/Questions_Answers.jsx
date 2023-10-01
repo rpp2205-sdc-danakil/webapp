@@ -4,8 +4,6 @@ import axios from 'axios';
 import QA from './QA.jsx';
 import withClickData from '../hoc_click_data.jsx';
 
-// this class is top-level component for Questions_Answers
-
 class Questions_Answers extends React.Component {
   constructor(props) {
     super(props);
