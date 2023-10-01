@@ -50,18 +50,12 @@ class ImageGallary extends React.Component {
     if(this.props.section === 'overview') {
       this.props.handleModalAppear();
       this.props.handleBackground("rgba(192,192,192,0.8)");
-      // this.modalInit();
     } else {
       this.props.handleModalDisappear();
       this.props.handleBackground("white");
     }
     this.props.interaction(e.target);
   }
-
-  // changeCurrentPhoto(newIndex) {
-  //   this.setState({ currentPhotoIndex: newIndex });
-  // }
-
 
   render() {
     if (this.props.section === 'modal') {
@@ -101,12 +95,14 @@ class ImageGallary extends React.Component {
           {/* up arrow will appear when the top image is not index 0, and the number of photos is larger than 4 */}
           {(this.state.top === 0 || this.props.photos.length <= 4) ? null : <div className="arrow-up-container" onMouseOver={this.handleArrowUp.bind(this)}><div className="arrow-up"></div></div>}
           {this.props.photos.map((photo, index) => {
-          return (<div key={index}>
-            <GallaryEntry id={index} photoInfo={photo} changeCurrentPhoto={this.props.handleCurrentPhotoChange} highlight={this.props.currentPhotoIndex === index} section='overview' top={this.state.top} bottom={this.state.bottom}/>
-          </div>)
-        })}
-        {/* down arrow will appear when the top image is not last image, and the number of photos is larger than 4 */}
-        {arrowForwardNotNeeded ? null : <div className="arrow-down-container" onMouseOver={this.handleArrowDown.bind(this)}><div className="arrow-down"></div></div>}
+            return (
+              <div key={index}>
+                <GallaryEntry id={index} photoInfo={photo} changeCurrentPhoto={this.props.handleCurrentPhotoChange} highlight={this.props.currentPhotoIndex === index} section='overview' top={this.state.top} bottom={this.state.bottom}/>
+              </div>
+            )
+          })}
+          {/* down arrow will appear when the top image is not last image, and the number of photos is larger than 4 */}
+          {arrowForwardNotNeeded ? null : <div className="arrow-down-container" onMouseOver={this.handleArrowDown.bind(this)}><div className="arrow-down"></div></div>}
         </div>
         <div className="current-photo">
           <img id="current-photo" alt="current photo" onClick={this.handleClick.bind(this)} style={{"cursor": "zoom-in"}} src={current_url}></img>
@@ -118,8 +114,8 @@ class ImageGallary extends React.Component {
               <img id="expandBtn" alt="expand button" src="img/fullscreen-icon.jpg" />
             </div>
         </div>
-      </div>)
-
+      </div>
+    )
   }
 }
 

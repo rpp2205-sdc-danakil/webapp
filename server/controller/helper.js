@@ -1,11 +1,10 @@
-require('dotenv').config();
+// require('dotenv').config();
 const axios = require('axios');
 const fs = require('fs');
 const API_Link = `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS_CODE}`;
 const auth = {headers: {Authorization: process.env.access_token}};
 
 module.exports = {
-
 
   postInteractionHandler: (req, res) => {
     var element = req.body.element;
@@ -20,31 +19,53 @@ module.exports = {
       })
   },
 
-  getProductsHandler: (req, res) => {
-    axios.get(`${process.env.PO_API_URL}`, auth)
-    .then(response => {
-      res.status(200).send(response.data);
-    })
-    .catch(err => {
-      res.status(500).send(err);
-    })
-  },
+  // getProductsHandler: (req, res) => {
+  //   axios.get(`${process.env.PO_API_URL}`, auth)
+  //   .then(response => {
+  //     res.status(200).send(response.data);
+  //   })
+  //   .catch(err => {
+  //     res.status(500).send(err);
+  //   })
+  // },
+
+  // getProductHandler: (req, res) => {
+  //   var product_id = req.params.product_id;
+
+  //   axios.get(`${process.env.PO_API_URL}/products/${product_id}`, auth)
+  //     .then(response => {
+  //       res.status(200).send(response.data)
+  //     })
+  //     .catch(err => {
+  //       res.status(500).send(err);
+  //     })
+  // },
 
   getProductHandler: (req, res) => {
     var product_id = req.params.product_id;
-
-    axios.get(`${process.env.PO_API_URL}/products/${product_id}`, auth)
+    axios.get(`${API_Link}/products/${product_id}`, auth)
       .then(response => {
-        res.status(200).send(response.data)
+      res.status(200).send(response.data)
       })
       .catch(err => {
         res.status(500).send(err);
       })
   },
 
+  // getRelatedHandler: (req, res) => {
+  //   var product_id = req.params.product_id;
+  //   axios.get(`${process.env.PO_API_URL}/products/${product_id}/related`, auth)
+  //     .then(response => {
+  //       res.status(200).send(response.data);
+  //     })
+  //     .catch(err => {
+  //       res.status(500).send(err);
+  //     })
+  // },
+
   getRelatedHandler: (req, res) => {
     var product_id = req.params.product_id;
-    axios.get(`${process.env.PO_API_URL}/products/${product_id}/related`, auth)
+    axios.get(`${API_Link}/products/${product_id}/related`, auth)
       .then(response => {
         res.status(200).send(response.data);
       })
@@ -53,9 +74,20 @@ module.exports = {
       })
   },
 
+  // getStylesHandler: (req, res) => {
+  //   var product_id = req.params.product_id;
+  //   axios.get(`${process.env.PO_API_URL}/products/${product_id}/styles`, auth)
+  //     .then(response => {
+  //       res.status(200).send(response.data);
+  //     })
+  //     .catch(err => {
+  //       res.status(500).send(err);
+  //     })
+  // },
+
   getStylesHandler: (req, res) => {
     var product_id = req.params.product_id;
-    axios.get(`${process.env.PO_API_URL}/products/${product_id}/styles`, auth)
+    axios.get(`${API_Link}/products/${product_id}/styles`, auth)
       .then(response => {
         res.status(200).send(response.data);
       })
@@ -101,7 +133,7 @@ module.exports = {
     var product_id = req.params.product_id;
     var count = req.params.count;
 
-    axios.get(`${process.env.QA_API_URL}/qa/questions?product_id=${product_id}&count=${count}`, auth)
+    axios.get(`${API_Link}/qa/questions?product_id=${product_id}&count=${count}`, auth)
     .then(response => {
       res.status(200).send(response.data);
     })
@@ -114,7 +146,7 @@ module.exports = {
     var question_id = req.params.question_id;
     var count = req.params.count;
 
-    axios.get(`${process.env.QA_API_URL}/qa/questions/${question_id}/answers?count=${count}`, auth)
+    axios.get(`${API_Link}/qa/questions/${question_id}/answers?count=${count}`, auth)
     .then(response => {
       res.status(200).send(response.data);
     })
@@ -160,10 +192,35 @@ module.exports = {
     });
   },
 
+  updateHelpfulCountsForReview: (req, res) => {
+    var review_id = req.params.review_id;
+    axios.put(`${API_Link}/reviews/${review_id}/helpful`, {review_id}, auth)
+    .then(() => {
+      res.sendStatus(204);
+    })
+    .catch(err => {
+      console.log('err: ', err);
+      res.sendStatus(500);
+    });
+  },
+
+  updateReportForReview: (req, res) => {
+    var review_id = req.params.review_id;
+
+    axios.put(`${API_Link}/reviews/${review_id}/report`, {review_id}, auth)
+    .then(response => {
+      res.status(204).send(response.data);
+    })
+    .catch(err => {
+      console.log('err: ', err);
+      res.sendStatus(500);
+    });
+  },
+
   updateHelpfulCountsForQuestion: (req, res) => {
     var question_id = req.params.question_id;
 
-    axios.put(`${process.env.QA_API_URL}/qa/questions/${question_id}/helpful`, {question_id}, auth)
+    axios.put(`${API_Link}/qa/questions/${question_id}/helpful`, {question_id}, auth)
     .then(response => {
       res.status(204).send(response.data);
     })
@@ -176,7 +233,7 @@ module.exports = {
   updateHelpfulCountsForAnswer: (req, res) => {
     var answer_id = req.params.answer_id;
 
-    axios.put(`${process.env.QA_API_URL}/qa/answers/${answer_id}/helpful`, {answer_id}, auth)
+    axios.put(`${API_Link}/qa/answers/${answer_id}/helpful`, {answer_id}, auth)
     .then(response => {
       res.status(204).send(response.data);
     })
@@ -189,7 +246,7 @@ module.exports = {
   updateReportForQuestion: (req, res) => {
     var question_id = req.params.question_id;
 
-    axios.put(`${process.env.QA_API_URL}/qa/questions/${question_id}/report`, {question_id}, auth)
+    axios.put(`${API_Link}/qa/questions/${question_id}/report`, {question_id}, auth)
     .then(response => {
       res.status(204).send(response.data);
     })
@@ -202,7 +259,7 @@ module.exports = {
   updateReportForAnswer: (req, res) => {
     var answer_id = req.params.answer_id;
 
-    axios.put(`${process.env.QA_API_URL}/qa/questions/${answer_id}/report`, {answer_id}, auth)
+    axios.put(`${API_Link}/qa/questions/${answer_id}/report`, {answer_id}, auth)
     .then(response => {
       res.status(204).send(response.data);
     })
@@ -218,7 +275,7 @@ module.exports = {
     var email = req.body.email;
     var product_id = parseInt(req.body.product_id);
 
-    axios.post(`${process.env.QA_API_URL}/qa/questions`, {
+    axios.post(`${API_Link}/qa/questions`, {
       body, name, email, product_id
     }, auth)
     .then(response => {
@@ -235,7 +292,7 @@ module.exports = {
     console.log('body; ', req.body)
     var { body, name, email, photos } = req.body;
 
-    axios.post(`${process.env.QA_API_URL}/qa/questions/${question_id}/answers`, {
+    axios.post(`${API_Link}/qa/questions/${question_id}/answers`, {
       question_id, body, name, email, photos
     }, auth)
     .then(response => {
