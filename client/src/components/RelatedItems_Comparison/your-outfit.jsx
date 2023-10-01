@@ -1,5 +1,8 @@
+//import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { useState, useEffect, useLayoutEffect } from 'react';
 import RPC from './related-product-cards.jsx';
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+//import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import withClickData from '../hoc_click_data.jsx';
 
 function YourOutfit (props) {
@@ -7,6 +10,8 @@ function YourOutfit (props) {
   const[start, setStart] = useState(0);
   const [Prev, togglePrev] = useState('');
   const [Next, toggleNext] = useState('');
+  //const [width, toggleNext] = useState(ref.current)
+
   const arr = props.list.map((element, index) =>(
     <RPC action={false} key={index} remove={props.removeProd}
       info={JSON.parse(localStorage.getItem(element))} redirect={props.changeProduct}
@@ -60,3 +65,5 @@ function YourOutfit (props) {
 }
 
 export default withClickData(YourOutfit, 'Related Items & Comparison');
+
+//<FontAwesomeIcon icon={faPlus} />

@@ -33,6 +33,9 @@ describe('Answer.jsx', function() {
   };
   test("should return formatted date", function() {
     render(<Answer answer={mockData} />)
+    // let answerInstance = new Answer();
+    // let date = '2022-09-17T00:00:00.000Z';
+    // expect(screen.).toEqual('September 17, 2022');
   });
   test("should handle the handleReport function correctly", async function() {
     render(<Answer answer={mockData} />);

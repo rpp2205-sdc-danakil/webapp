@@ -5,6 +5,7 @@ class SizeSelector extends React.Component {
     super(props)
   }
 
+
   render() {
     return (
       <div className="size-selector">

@@ -18,7 +18,7 @@ class Ratings_Reviews extends React.Component {
   }
 
   search(reviews) {
-    this.setState({filteredReviews: reviews});
+    this.setState({filteredReviews: reviews}, () => { console.log('testing search under Ratings_Reviews'); });
    }
 
   componentDidUpdate(prevProps) {

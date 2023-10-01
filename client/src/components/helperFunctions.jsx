@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 module.exports = {
   totalRatingsAndAvgRating: (obj) => {
     var arr = [1, 2, 3, 4, 5];

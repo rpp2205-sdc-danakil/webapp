@@ -1,15 +1,14 @@
 import React, { Suspense } from 'react';
-import axios from 'axios';
-import { totalRatingsAndAvgRating } from './helperFunctions.jsx';
-import TopBar from './TopBar.jsx';
-import ErrorBoundary from './ErrorBoundary.jsx';
-
 const Overview = React.lazy(() => import('./Overview/overview.jsx'));
 const Ratings_Reviews = React.lazy(() => import('./Ratings_Reviews/Ratings_Reviews.jsx'));
+import axios from 'axios';
+import { totalRatingsAndAvgRating } from './helperFunctions.jsx';
 const Questions_Answers = React.lazy(() => import('./Questions_Answers/Questions_Answers.jsx'));
 const RPList = React.lazy(() => import('./RelatedItems_Comparison/rp-list.jsx'));
 const YourOutfit = React.lazy(() => import('./RelatedItems_Comparison/your-outfit.jsx'));
 const Carousel = React.lazy(() => import('./RelatedItems_Comparison/Carousel.jsx'));
+import TopBar from './TopBar.jsx';
+import ErrorBoundary from './ErrorBoundary.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -21,7 +20,7 @@ class App extends React.Component {
                   reviews: [],
                   totalReviews: 0,
                   currentProduct: {}, //contains product name, category
-                  defaultStyle: {}, //contains price info (original_price, sale_price, thumbnail)
+                  defaultStyle: {},//contains price info(original_price, sale_price, thumbnail) //
                   styles: [],
                   background: "white",
                   keys: [...Object.keys(localStorage)],
@@ -59,29 +58,28 @@ class App extends React.Component {
         if (error.response) {
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
-          console.error(error.response.data);
-          console.error(error.response.status);
-          console.error(error.response.headers);
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
         } else if (error.request) {
           // The request was made but no response was received
           // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
           // http.ClientRequest in node.js
-          console.error(error.request);
+          console.log(error.request);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.error('Error', error.message);
+          console.log('Error', error.message);
         }
-        console.error(error.config);
-        // this.init('71697');
+        console.log(error.config);
       })
   }
 
   componentDidMount() {
-    var prodId = window.location.pathname;
+    var prodId = window.location.pathname
     if(prodId.slice(1) !== '') {
-      this.init(prodId.slice(1));
+      this.init(prodId.slice(1))
     } else {
-      this.init('71697');
+      this.init('1');
     }
   }
 
@@ -101,6 +99,7 @@ class App extends React.Component {
   removeProduct(e) {
     e.preventDefault();
     var id = isNaN(e.target.id) || e.target.id.length === 0 ? this.state.currentProductId : e.target.id;
+    console.log('id', id);
     localStorage.removeItem(id);
     this.setState({keys: [...Object.keys(localStorage)]})
   }

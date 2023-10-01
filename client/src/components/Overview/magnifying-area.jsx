@@ -18,6 +18,7 @@ const handleMouseMove = (e) => {
   var mHeight = rect.bottom - rect.top;
   clientX = clientX / mWidth * 100;
   clientY = clientY / mHeight * 100;
+  //map: (0, 0) => (75, 75), (100, 100) => (-75, -75)
   var x = 75 - clientX * 1.5;
   var y = 75 - clientY * 1.5;
   image.style.transform = 'translate(' + x + '%, ' + y + '%) scale(2.5)';
