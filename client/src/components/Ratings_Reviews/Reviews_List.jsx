@@ -34,7 +34,7 @@ class Reviews_List extends React.Component {
           sortOption: this.state.sortOption,
           searchedTerm: word,
           tiles: 2
-        })
+        }, () => { console.log('new reviews'); })
       } else {
         this.setState({
           productId: this.props.productId,
@@ -43,7 +43,7 @@ class Reviews_List extends React.Component {
           sortOption: this.state.sortOption,
           searchedTerm: word,
           tiles: 2
-        })
+        }, () => { console.log('new reviews'); })
       }
     }
 
@@ -63,10 +63,11 @@ class Reviews_List extends React.Component {
         limitReached: false,
         reviews: newReviews,
         searchedTerm: word,
+        //searchedReviews: newReviews
         tiles: 2
-      })
+      }, () => { console.log('new reviews'); })
     } else {
-      this.setState({searchedTerm: word});
+      this.setState({searchedTerm: word}, () => { console.log('testing search'); });
     }
    }
 
@@ -106,6 +107,8 @@ class Reviews_List extends React.Component {
           tiles: 2
         })
       } else {
+        console.log('test 1 2 3');
+
         for (var j = 0; j < this.props.reviews.length; j++) {
           for (var k = 0; k < values.length; k++) {
             if (values[k] === this.props.reviews[j].rating) {

@@ -106,6 +106,7 @@ body {
 
 .overview {
   position: relative;
+  /* border: solid green; */
   height: auto;
   width: 45%;
   display: flex;
@@ -125,7 +126,8 @@ body {
 .product-info {
   width: 100%;
   height: 30%;
-
+  /* border-style: solid; */
+  /* border-color: #848484; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -134,6 +136,8 @@ body {
 .style-selector {
   width: 100%;
   height: auto;
+  /* border-style: solid; */
+  /* border-color: red; */
   display: flex;
   flex-direction: column;
 }
@@ -142,11 +146,15 @@ body {
   width: 100%;
   min-height: 140px;
   max-height: auto;
+  /* border-style: solid; */
+  /* border-color: rebeccapurple; */
   display: flex;
   flex-direction: column;
   justify-content:space-around;
   align-content: center;
 }
+
+/* photo gallary styling */
 
 #current-photo {
   display: block;
@@ -155,6 +163,7 @@ body {
   height: 100%;
 }
 
+      /* container for the current photo */
 .current-photo {
   overflow:hidden;
   position: absolute;
@@ -232,7 +241,6 @@ body {
   width: 30px;
   height: 30px;
 }
-
 /* Styling for star rating system */
 .five-stars {
   display: flex;
@@ -267,6 +275,11 @@ body {
   -webkit-text-stroke: 1px orange;
 }
 
+/* .single-star-container {
+  width: 16px;
+  display: inline-block
+} */
+
 /* Product info styling */
 .five-stars, #ratingScore, #category, #title, .price {
   height: 20px;
@@ -285,6 +298,7 @@ body {
 }
 
 .price {
+  /* border: solid peru; */
   height: 57px;
 }
 
@@ -323,6 +337,7 @@ body {
 
 .styleThumbnails-parent {
   position: absolute;
+
 }
 
 .styleThumbnails-check {
@@ -356,6 +371,8 @@ body {
 
 .styles {
   position: relative;
+  /* border-color: #848484; */
+  /* border-style: solid; */
   width: 320px;
   height: auto;
   display: flex;
@@ -370,6 +387,8 @@ body {
 }
 
 .arrow-up-container, .arrow-down-container {
+  /* margin-top: 10px;
+  margin-bottom: 20px; */
   margin-left: 10px;
   margin-right: 10px;
   width: 50px;
@@ -406,6 +425,7 @@ body {
 /* image gallary modal view styling */
 
 .overview-modal {
+  /* display: none !important; */
   position: absolute;
   background-color: white;
   height: 100%;
@@ -432,9 +452,12 @@ body {
   display:flex;
   flex-direction: column;
   justify-content: center;
+
+  /* align-content: space-around; */
 }
 
 .current-photo-modal {
+  /* border: solid red; */
   width: 100%;
   height: 100%;
   position: relative;
@@ -498,12 +521,14 @@ body {
   display: block;
   height: 98%;
   width: min-content;
+  /* border: solid green; */
   overflow: hidden;
   position: relative;
 }
 
 #current-photo-modal {
   border: solid black;
+  /* this setting means to let height show 100% of image height, and then let the image adjust width so it shows 100% of width without changing the ratio of the image */
   max-height: 100%;
   min-height: 100%;
   min-width: 100%;
@@ -512,7 +537,12 @@ body {
   position: relative;
   top: 0;
   left: 0;
+  /* transform: translate(-50%, -50%);
+  pointer-events: none; */
 }
+
+
+
 
 /* Related Items and Comparison styling */
 .container {
@@ -554,6 +584,8 @@ body {
 }
 
 #carousel-container {
+  /* vertical-align: middle;
+  display: inline-block; */
   width: 90%;
   height: 100%;
   position: relative;
@@ -592,6 +624,17 @@ div.container > p {
   font-weight: bold;
 }
 
+/* @media only screen and (max-width: 2000px) {
+  .Next {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .Next {
+    display: block;
+  }
+} */
 
 #modal {
   background-color: rgb(241, 241, 241);
@@ -628,6 +671,7 @@ div.container > p {
 
 
 .add-to-card-line1, .add-to-card-line2 {
+  /* border: solid black; */
   width: 100%;
   height: 70px;
   display: flex;
@@ -651,6 +695,24 @@ div.container > p {
   margin: 35px 0px 35px 0px;
   max-width: 2800px;
 }
+
+/* .review_container {
+  height: 600px;
+  position: static;
+  display: block;
+  justify-content: center;
+  align-content: center;
+  padding: 25px 0px 0px 0px;
+  margin: 25px 0px 0px 0px;
+} */
+
+/* .reviews_list {
+  position: relative;
+  float: right;
+  width: 100%;
+  padding-left: 25px;
+  padding-right: 25px;
+} */
 
 .reviews_list {
   position: relative;
@@ -720,6 +782,7 @@ div.review_photo {
 
 img.review_photo {
   max-width: 100%;
+  /* height: auto; */
 }
 
 img.review_photo_modal {

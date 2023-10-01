@@ -1,6 +1,6 @@
 node_modules
 client/dist/*main.js
-coverage/
 .env
+coverage/
 client/src/components/Questions_Answers/config.js
 client/src/components/Ratings_Reviews/config_rr.js

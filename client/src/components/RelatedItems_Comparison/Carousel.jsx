@@ -12,6 +12,7 @@ const withCarousel = (WrappedComponent, widget) => {
       }
     }
 
+
     render() {
       return (
       <WrappedComponent {...this.props} />)

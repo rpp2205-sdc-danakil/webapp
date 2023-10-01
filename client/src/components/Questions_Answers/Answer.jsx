@@ -1,6 +1,7 @@
 import axios from 'axios';
 import withClickData from '../hoc_click_data.jsx';
 
+// this class handles each answer for the specific product
 class Answer extends React.Component {
   constructor(props) {
     super(props);
